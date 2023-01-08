@@ -177,6 +177,7 @@ Check_install(){
 		Green 正在安装...
 		bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 		Get
+                V2ray_config
 	else
 		Red "v2ray已安装"
 	
@@ -190,16 +191,69 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --d
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 sudo apt update
 sudo apt install caddy
-
-Caddy_config
 systemctl restart caddy
 Green caddy安装完成!
 sleep 8
+Caddy_config
 else
 	Caddy_config
 	Green caddy 已安装!
+cd /var && mkdir www && cd www && mkdir html
 	sleep 8
 	fi
+}
+Web_install(){
+while:
+do
+Green '
+1.3DCEList-master
+2.WebGL-Fluid-Simulation
+3.Spotify-Landing-Page-Redesign-master
+4.website2
+5.photogenic
+6.退出
+'
+cd /var/www/html
+read -p "请选择序号(1-6):" p
+case $p in
+1)
+rm -rf /var/www/html/*
+wget https://github.com/ioi80/tt/raw/main/3DCEList-master.zip
+unzip 3DCEList-master.zip
+continue
+;;
+2)
+rm -rf /var/www/html/*
+wget https://github.com/ioi80/tt/raw/main/WebGL-Fluid-Simulation-master.zip
+unzip WebGL-Fluid-Simulation-master.zip
+continue
+;;
+3)
+rm -rf /var/www/html/*
+wget https://github.com/ioi80/tt/raw/main/Spotify-Landing-Page-Redesign-master.zip
+unzip Spotify-Landing-Page-Redesign-master.zip
+continue
+;;
+4)
+rm -rf /var/www/html/*
+wget https://github.com/jinwyp/one_click_script/raw/master/download/website2.zip
+unzip website2.zip
+continue
+;;
+5)
+rm -rf /var/www/html/*
+wget https://github.com/ioi80/tt/raw/main/photogenic.zip
+unzip photogenic.zip
+continue
+;;
+6)
+exit
+;;
+esac
+done
+systemctl restart caddy
+Green 静态网页安装完成!
+sleep 8
 }
 
 BBR(){
@@ -224,7 +278,8 @@ Menu(){
 	3.修改配置信息
 	4.查看配置信息以及服务运行状态
 	5.放行指定端口
-	6.退出
+        6.安装静态网页
+	7.退出
 	'
 	read -p "请输入序号(1-6):" number	
 	case $number in
@@ -238,7 +293,8 @@ Menu(){
 			continue
 			;;
 		3)
-			continue
+			Get
+                        continue
 			;;
 		4)
 			Check_service
@@ -254,8 +310,12 @@ Menu(){
 			continue
 			;;
 		6)
-			exit
+			Web_install
+                        continue
 			;;
+                7)
+                        exit
+                        ;;
 	esac
 done
 }
