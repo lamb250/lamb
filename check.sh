@@ -59,7 +59,7 @@ Get(){
 	V2ray_config
 	
 	touch /usr/local/etc/v2ray/log.txt
-	echo -e "\e[033m vemss配 置 :\n域 名 :$domain \n端 口 :$port \nuuid:$uuid \n伪 装 路 径 :/$path \e[0m"  >/usr/local/etc/v2ray/log.txt
+	echo -e "\e[033mvemss配 置 :\n域 名 :$domain \n端 口 :$port \nuuid:$uuid \n伪 装 路 径 :/$path \e[0m"  >/usr/local/etc/v2ray/log.txt
 
 }
 V2ray_config(){
@@ -198,19 +198,19 @@ else
 	Caddy_config
 	Green caddy 已安装!
 
-	sleep 8
+	sleep 5
 	fi
 }
 Web_install(){
 while :
 do
 Green '
-1.3DCEList-master
-2.WebGL-Fluid-Simulation
-3.Spotify-Landing-Page-Redesign-master
-4.website2
-5.photogenic
-6.退出
+      1.3DCEList-master
+      2.WebGL-Fluid-Simulation
+      3.Spotify-Landing-Page-Redesign-master
+      4.website2
+      5.photogenic
+      6.退出
 '
 if [ ! -d /var/www/html ]
 then
@@ -251,13 +251,14 @@ unzip photogenic.zip
 continue
 ;;
 6)
+Menu
 exit
 ;;
 esac
 done
 systemctl restart caddy
 Green 静态网页安装完成!
-sleep 8
+sleep 5
 }
 
 BBR(){
@@ -285,7 +286,7 @@ Menu(){
         6.安装静态网页
 	7.退出
 	'
-	read -p "请输入序号(1-6):" number	
+	read -p "请输入序号(1-7):" number	
 	case $number in
 
 		1)
