@@ -2,9 +2,6 @@
 Green(){
 	echo -e "\e[032m $1 \e[0m"
 }
-Blue(){
-        echo -e "\e[034m $1 \e[0m"
-}
 Yellow(){
 	echo -e "\e[033 $1 \e[0m"
 }
@@ -203,6 +200,7 @@ else
 Web_install(){
 while :
 do
+Yellow ***菜鸡***
 Green '
       1.3DCEList-master
       2.WebGL-Fluid-Simulation
@@ -276,6 +274,7 @@ BBR(){
 Menu(){
 	while :
 	do
+      Yellow ***菜鸡***
 	Green '
 	1.安装vmess+ws+caddy
 	2.开启BBR
