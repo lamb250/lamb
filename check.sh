@@ -192,7 +192,6 @@ sudo apt update
 sudo apt install caddy
 systemctl restart caddy
 Green caddy安装完成!
-sleep 8
 Caddy_config
 else
 	Caddy_config
