@@ -57,7 +57,7 @@ Get(){
 	fi
 
 	V2ray_config
-	
+	Caddy_config
 	touch /usr/local/etc/v2ray/log.txt
 	echo -e "\e[033m vemss配 置 :\n域 名 :$domain \n端 口 :$port \nuuid:$uuid \n伪 装 路 径 :/$path \e[0m"  >/usr/local/etc/v2ray/log.txt
 
