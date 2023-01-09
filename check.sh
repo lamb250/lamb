@@ -165,6 +165,7 @@ Caddy_config(){
 }
 
 EOF
+systemctl enable v2ray
 sleep 5
 }
 
@@ -177,7 +178,8 @@ Check_install(){
                 V2ray_config
 	else
 		Red "v2ray已安装"
-	
+                Get
+	        Caddy_config
 	fi
 
 	if [ ! -f $caddy_path ]
@@ -210,7 +212,12 @@ Green '
 5.photogenic
 6.退出
 '
+if [ ! -d /var/www/html ]
+then
 cd /var && mkdir www && cd www && mkdir html && cd html
+else
+cd /var/www/html
+fi
 read -p "请选择序号(1-6):" p
 case $p in
 1)
@@ -255,7 +262,7 @@ sleep 8
 
 BBR(){
 	echo $check_bbr >/dev/null
-	if [ $check_bbr != "tcp_bbr" ]
+	if [ $check_bbr ! = "tcp_bbr" ]
 	then
 		Green 正在启动BBR加速
 		echo net.core.default_qdisc=fq >> /etc/sysctl.conf >/dev/null
