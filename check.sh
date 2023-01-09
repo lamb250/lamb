@@ -122,9 +122,7 @@ V2ray_config(){
 
 }
 EOF
-
-Green v2ray安装完成!
-sleep 8
+sleep 5
 }
 
 Caddy_config(){
@@ -167,8 +165,7 @@ Caddy_config(){
 }
 
 EOF
-Green caddy安装完成!
-sleep 8
+sleep 5
 }
 
 Check_install(){
@@ -198,12 +195,12 @@ Caddy_config
 else
 	Caddy_config
 	Green caddy 已安装!
-cd /var && mkdir www && cd www && mkdir html
+
 	sleep 8
 	fi
 }
 Web_install(){
-while:
+while :
 do
 Green '
 1.3DCEList-master
@@ -213,7 +210,7 @@ Green '
 5.photogenic
 6.退出
 '
-cd /var/www/html
+cd /var && mkdir www && cd www && mkdir html && cd html
 read -p "请选择序号(1-6):" p
 case $p in
 1)
@@ -302,10 +299,12 @@ Menu(){
 			;;
 		5)
 			read -p "输入要放行的端口(443、80端口已放行):" port
+                        iptables -I INPUT -p tcp --dport $port -j ACCEPT >/dev/null
 			iptables -I INPUT -p tcp --dport 80 -j ACCEPT >/dev/null
 			iptables -I INPUT -p tcp --dport 443 -j ACCEPT >/dev/null
-			iptables -I INPUT -p tcp --dport $port -j ACCEPT >/dev/null
 			iptables-save >/dev/null
+                        systemctl restart caddy
+                        systemctl restart v2ray
 			Green $port端口已放行
 			continue
 			;;
