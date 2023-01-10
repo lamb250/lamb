@@ -211,7 +211,8 @@ Green '
 '
 if [ ! -d /var/www/html ]
 then
-cd /var && mkdir www && cd www && mkdir html && cd html
+ mkdir -p /var/www/html
+ cd /var/www/html
 else
 cd /var/www/html
 fi
