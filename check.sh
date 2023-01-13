@@ -200,7 +200,7 @@ else
 Web_install(){
 while :
 do
-Yellow ***菜鸡***
+  
 Green '
       1.3DCEList-master
       2.WebGL-Fluid-Simulation
@@ -275,7 +275,7 @@ BBR(){
 Menu(){
 	while :
 	do
-      Yellow ***菜鸡***
+        
 	Green '
 	1.安装vmess+ws+caddy
 	2.开启BBR
